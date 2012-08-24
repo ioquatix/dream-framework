@@ -1,5 +1,9 @@
-Dream Project
-=============
+Dream Base
+==========
+
+This project is designed as a base setup for developing a new project. It includes a number of packages typically useful in cross-platform development. Please fork it to start a new project.
+
+The main targets at this time include Mac OS X, iOS and Linux.
 
 Dream provides a simple package build system to build external dependencies as static libraries. This is the preferred option for supported platforms as it reduces the chance that problems will arise with library versions.
 
@@ -8,11 +12,15 @@ To list all available packages:
 	% rake list
 	(in /Users/samuel/Documents/Programming/Graphics/Dream/ext)
 	Package: libpng
-	Package: freetype
 	Package: libvorbis
+	Package: jpeg
+	Package: freetype
+	Package: OpenCV
 	Package: libogg
 		(depends on libvorbis)
-	Package: jpeg
+	Platform: darwin_ios_simulator
+	Platform: darwin_osx
+	Platform: darwin_ios
 
 To build a specific package use the following command:
 
@@ -20,7 +28,7 @@ To build a specific package use the following command:
 
 Not all host platforms can build all packages. To build all packages for one platform:
 
-	rake build platform=darwin_iphoneos
+	rake build platform=darwin_ios
 
 Platforms
 ---------
@@ -29,7 +37,7 @@ Platforms are specific configurations for compiling external dependencies. Unfor
 
 ### Darwin ###
 
-At this time, Mac OS X 10.7 is required to build `darwin_*` platforms. 
+At this time, Mac OS X 10.8 is required to build `darwin_*` platforms. 
 
 ### Android NDK ###
 
