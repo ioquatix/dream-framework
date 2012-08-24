@@ -1,0 +1,33 @@
+Binary files OpenCV-2.4.2/.DS_Store and OpenCV-2.4.2-clang/.DS_Store differ
+diff -rupN OpenCV-2.4.2/modules/core/include/opencv2/core/operations.hpp OpenCV-2.4.2-clang/modules/core/include/opencv2/core/operations.hpp
+--- OpenCV-2.4.2/modules/core/include/opencv2/core/operations.hpp	2012-07-03 10:55:13.000000000 +1200
++++ OpenCV-2.4.2-clang/modules/core/include/opencv2/core/operations.hpp	2012-08-25 01:52:10.000000000 +1200
+@@ -59,7 +59,7 @@
+   #if __GNUC__*10 + __GNUC_MINOR__ >= 42
+ 
+     #if !defined WIN32 && (defined __i486__ || defined __i586__ || \
+-        defined __i686__ || defined __MMX__ || defined __SSE__  || defined __ppc__)
++        defined __i686__ || defined __MMX__ || defined __SSE__  || defined __ppc__ || defined __arm__)
+       #define CV_XADD __sync_fetch_and_add
+     #else
+       #include <ext/atomicity.h>
+diff -rupN OpenCV-2.4.2/modules/flann/include/opencv2/flann/lsh_table.h OpenCV-2.4.2-clang/modules/flann/include/opencv2/flann/lsh_table.h
+--- OpenCV-2.4.2/modules/flann/include/opencv2/flann/lsh_table.h	2012-06-29 10:56:01.000000000 +1200
++++ OpenCV-2.4.2-clang/modules/flann/include/opencv2/flann/lsh_table.h	2012-08-25 01:25:03.000000000 +1200
+@@ -40,11 +40,11 @@
+ #include <iomanip>
+ #include <limits.h>
+ // TODO as soon as we use C++0x, use the code in USE_UNORDERED_MAP
+-#ifdef __GXX_EXPERIMENTAL_CXX0X__
+-#  define USE_UNORDERED_MAP 1
+-#else
+-#  define USE_UNORDERED_MAP 0
+-#endif
++//#ifdef __GXX_EXPERIMENTAL_CXX0X__
++//#  define USE_UNORDERED_MAP 1
++//#else
++//#  define USE_UNORDERED_MAP 0
++//#endif
+ #if USE_UNORDERED_MAP
+ #include <unordered_map>
+ #else
