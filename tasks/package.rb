@@ -49,6 +49,7 @@ module Dream
 			@depends = []
 
 			@source_path = @path + name
+			@fetch_location = nil
 
 			ALL[@name] = self
 		end
@@ -57,6 +58,7 @@ module Dream
 		attr :version
 		attr :path
 		attr :variants
+		attr :fetch_location
 
 		attr :depends, true
 		attr :source_path, true
@@ -88,6 +90,10 @@ module Dream
 			else
 				raise BuildError.new("Could not find variant #{platform.name}")
 			end
+		end
+    
+		def fetch_from(location)
+			@fetch_location = location
 		end
 
 		def self.require(name)
