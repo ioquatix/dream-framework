@@ -3,10 +3,12 @@ require 'pathname'
 
 module Dream
 	PACKAGES_PATH = BASE_PATH + "packages"
-	OPTION_PATH = BASE_PATH + "opt"
 
 	class Package
 		ALL = {}
+    
+		class BuildError < StandardError
+		end
 
 		def self.all
 			ALL.values
@@ -36,9 +38,6 @@ module Dream
 			end
 
 			return ordered
-		end
-
-		class BuildError < StandardError
 		end
 
 		def initialize(name, path)
