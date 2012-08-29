@@ -19,7 +19,7 @@ Dir[PLATFORMS_PATH + "*/platform.rb"].each do |path|
 end
 
 Dir[PACKAGES_PATH + "*"].each do |path|
-	next unless File.exist? path + "/build.rb"
+	next unless File.exist? path + "/package.rb"
 	
 	Package.require(File.basename(path))
 end
