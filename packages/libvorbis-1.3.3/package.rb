@@ -1,5 +1,7 @@
 
 Package.define("libvorbis-1.3.3") do |package|
+	package.fetch_from :url => "http://downloads.xiph.org/releases/vorbis/libvorbis-1.3.3.tar.gz"
+	
 	package.variant(:all) do |platform, config|
 		RExec.env(config.build_environment) do
 			Dir.chdir(package.src) do

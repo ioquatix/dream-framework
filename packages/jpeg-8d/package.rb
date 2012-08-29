@@ -1,5 +1,7 @@
 
-Package.define("jpeg-8c") do |package|
+Package.define("jpeg-8d") do |package|
+	package.fetch_from :url => "http://www.ijg.org/files/jpegsrc.v8d.tar.gz"
+	
 	package.variant(:all) do |platform, config|
 		RExec.env(config.build_environment) do
 			Dir.chdir(package.src) do

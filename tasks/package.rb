@@ -92,7 +92,7 @@ module Dream
 
 		def self.require(name)
 			unless ALL[name]
-				load PACKAGES_PATH + name + "build.rb"
+				load PACKAGES_PATH + name + "package.rb"
 			end
 
 			return ALL[name]
