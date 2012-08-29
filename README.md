@@ -1,11 +1,14 @@
-Dream Base
-==========
+# Dream Project #
 
-This project is designed as a base setup for developing a new project. It includes a number of packages typically useful in cross-platform development. Please fork it to start a new project.
+This project includes a number of packages typically useful in application development along with build scripts to compile everything for a variety of different platforms. It's primary role is to serve as a base project for the Dream framework.
 
-The main targets at this time include Mac OS X, iOS and Linux.
+To build and compile all dependencies, simply run the default task:
 
-Dream provides a simple package build system to build external dependencies as static libraries. This is the preferred option for supported platforms as it reduces the chance that problems will arise with library versions.
+	% rake
+
+The main targets at this time include Mac OS X, iOS and Linux. Android support is currently in progress and Windows support may happen eventually.
+
+## Packages ##
 
 To list all available packages:
 
@@ -22,16 +25,15 @@ To list all available packages:
 	Platform: darwin_osx
 	Platform: darwin_ios
 
+To build all packages, use the following command:
+
+	% rake build_all
+
 To build a specific package use the following command:
 
-	rake build package=freetype platform=android_ndk
+	% rake build[freetype,android_ndk]
 
-Not all host platforms can build all packages. To build all packages for one platform:
-
-	rake build platform=darwin_ios
-
-Platforms
----------
+## Platforms ##
 
 Platforms are specific configurations for compiling external dependencies. Unfortunately, since most dependencies use `autoconf`, we need to work hard to setup the correct build environment to ensure that libraries are compiled properly. Feel free to adjust the platform configuration files for your own requirements.
 
@@ -44,8 +46,3 @@ At this time, Mac OS X 10.8 is required to build `darwin_*` platforms.
 You will need to download the [android_ndk][1] (only the latest version is supported) into platforms in order for this to work.
 
 [1]: http://www.crystax.net/android/ndk
-
-Packages
---------
-
-A variety of packages required by Dream are automatically downloaded. The list of URLs is stored in `fetch.yaml`.
