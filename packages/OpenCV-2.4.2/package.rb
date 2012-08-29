@@ -7,7 +7,7 @@ Package.define("OpenCV-2.4.2") do |package|
 		RExec.env(config.build_environment) do
 			run("patch", "-Np0", "-iclang.patch")
 			
-			Dir.chdir(package.src) do
+			Dir.chdir(package.source_path) do
 				sh("rm", "-rf", "build")
 				sh("mkdir", "build")
 				

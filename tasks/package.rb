@@ -63,11 +63,6 @@ module Dream
 		attr :depends, true
 		attr :source_path, true
 
-		# For compatibility, now use .source_path
-		def src
-			@source_path
-		end
-
 		def self.define(name, &block)
 			package = Package.new(name, PACKAGES_PATH + name)
 

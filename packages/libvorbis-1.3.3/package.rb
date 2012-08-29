@@ -4,7 +4,7 @@ Package.define("libvorbis-1.3.3") do |package|
 	
 	package.variant(:all) do |platform, config|
 		RExec.env(config.build_environment) do
-			Dir.chdir(package.src) do
+			Dir.chdir(package.source_path) do
 				sh("make", "clean") if File.exist? "Makefile"
 				
 				# The default configure has problems when compiling with multiple architectures because of the following option..
