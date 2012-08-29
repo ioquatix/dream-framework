@@ -1,7 +1,6 @@
 
 Package.define("OpenCV-2.4.2") do |package|
-	package.fetch_from :url => "http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/2.4.2/OpenCV-2.4.2.tar.bz2/download", 
-		:filename => "OpenCV-2.4.2.tar.bz2"
+	package.fetch_from :url => "http://sourceforge.net/projects/opencvlibrary/files/opencv-unix/2.4.2/OpenCV-2.4.2.tar.bz2"
 	
 	package.variant(:all) do |platform, config|
 		RExec.env(config.build_environment) do
