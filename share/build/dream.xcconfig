@@ -28,8 +28,8 @@ DEBUG_CFLAGS[variant=release]=-DDREAM_RELEASE
 OTHER_CFLAGS=-DDREAM_VARIANT=$(DREAM_PLATFORM) $(DEBUG_CFLAGS)
 
 // SDK specific frameworks:
-OTHER_LDFLAGS[sdk=macosx*]=$(EXT_LIBS) -framework OpenGL -framework OpenAL -framework Foundation -framework Cocoa -framework AppKit -framework CoreVideo -framework CoreServices
-OTHER_LDFLAGS[sdk=iphone*]=$(EXT_LIBS) -framework QuartzCore -framework OpenGLES -framework OpenAL -framework CoreGraphics -framework Foundation -framework UIKit
+OTHER_LDFLAGS[sdk=macosx*]=$(DREAM_PROJECT_LIBRARIES) -framework OpenGL -framework OpenAL -framework Foundation -framework Cocoa -framework AppKit -framework CoreVideo -framework CoreServices
+OTHER_LDFLAGS[sdk=iphone*]=$(DREAM_PROJECT_LIBRARIES) -framework QuartzCore -framework OpenGLES -framework OpenAL -framework CoreGraphics -framework Foundation -framework UIKit
 
 // Search paths:
 HEADER_SEARCH_PATHS="$(DREAM_PLATFORM_PATH)/include" "$(DREAM_PLATFORM_PATH)/include/freetype2"

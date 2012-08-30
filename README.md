@@ -1,12 +1,19 @@
-# Dream Project #
+# Dream Framework #
 
-This project includes a number of packages typically useful in application development along with build scripts to compile everything for a variety of different platforms. It's primary role is to serve as a base project for the Dream framework.
-
-To build and compile all dependencies, simply run the default task:
+This framework includes a number of packages typically useful in application development along with build scripts to compile everything for a variety of different platforms. To build and compile all dependencies, simply run the default task:
 
 	% rake
 
 The main targets at this time include Mac OS X, iOS and Linux. Android support is currently in progress and Windows support may happen eventually.
+
+## New Projects ##
+
+The purpose of this framework is to facilitate the development of cross-platform projects. To link Dream Project to a new project, use the following command:
+
+	% rake project:link path/to/project
+	-- This will create path/to/project/support/dream-framework
+
+This will 
 
 ## Packages ##
 
