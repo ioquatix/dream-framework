@@ -1,0 +1,57 @@
+//
+//  Dream.xcconfig
+//  This file is part of the "Dream" project, and is released under the MIT license.
+//
+//  Created by Samuel Williams on 29/08/10.
+//  Copyright (c) 2010 Samuel Williams. All rights reserved.
+//
+
+// Select the correct platform based on the SDK:
+DREAM_PLATFORM[sdk=macosx*]=darwin_osx
+DREAM_PLATFORM[sdk=iphoneos*]=darwin_ios
+DREAM_PLATFORM[sdk=iphonesimulator*]=darwin_ios_simulator
+
+// Compute the prefix path:
+DREAM_PLATFORM_PATH=$(DREAM_PROJECT)/build/$(DREAM_PLATFORM)/
+
+// Select the valid architectures based on the SDK:
+VALID_ARCHS[sdk=macosx*]=i386 x86_64
+VALID_ARCHS[sdk=iphoneos*]=armv6 armv7
+VALID_ARCHS[sdk=iphonesimulator*]=i386
+ARCHS=$(VALID_ARCHS)
+
+// We have two convenient defines for building debug and release builds:
+DEBUG_CFLAGS[variant=debug]=-DDREAM_DEBUG
+DEBUG_CFLAGS[variant=release]=-DDREAM_RELEASE
+
+// Basic CFLAGS for building Dream:
+OTHER_CFLAGS=-DDREAM_VARIANT=$(DREAM_PLATFORM) $(DEBUG_CFLAGS)
+
+// SDK specific frameworks:
+OTHER_LDFLAGS[sdk=macosx*]=$(EXT_LIBS) -framework OpenGL -framework OpenAL -framework Foundation -framework Cocoa -framework AppKit -framework CoreVideo -framework CoreServices
+OTHER_LDFLAGS[sdk=iphone*]=$(EXT_LIBS) -framework QuartzCore -framework OpenGLES -framework OpenAL -framework CoreGraphics -framework Foundation -framework UIKit
+
+// Search paths:
+HEADER_SEARCH_PATHS="$(DREAM_PLATFORM_PATH)/include" "$(DREAM_PLATFORM_PATH)/include/freetype2"
+LIBRARY_SEARCH_PATHS="$(DREAM_PLATFORM_PATH)/lib"
+
+// Use C++0x11 features:
+GCC_VERSION=com.apple.compilers.llvm.clang.1_0
+CLANG_CXX_LANGUAGE_STANDARD=c++11
+CLANG_CXX_LIBRARY=libc++
+
+// Avoid problems with C++ visibility:
+GCC_INLINES_ARE_PRIVATE_EXTERN=NO
+GCC_SYMBOLS_PRIVATE_EXTERN=NO
+
+// Faster execution for floating-point heavy code when compiling for ARM:
+GCC_THUMB_SUPPORT=NO
+
+// Code signing on iOS only works with PIC.
+GCC_DYNAMIC_NO_PIC[sdk=iphoneos*]=NO
+GCC_DYNAMIC_NO_PIC[sdk=macosx]=YES
+
+// General optimisations, should give you about +10FPS depending on workload:
+GCC_OPTIMIZATION_LEVEL[variant=release]=3
+GCC_UNROLL_LOOPS[variant=release]=YES
+LLVM_LTO[variant=release]=YES
