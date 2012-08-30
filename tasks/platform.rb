@@ -48,5 +48,9 @@ module Dream
 	
 		attr :name
 		attr :config
+		
+		def to_s
+			"<Platform: #{@name}>"
+		end
 	end
 end
