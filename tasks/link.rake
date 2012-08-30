@@ -21,7 +21,7 @@ namespace :project do
 			project_support_link_path.unlink
 		end
 		
-		relative_path = dream_project_path.relative_path_from(project_support_link_path.dirname)
+		relative_path = dream_project_path.realpath.relative_path_from(project_support_link_path.dirname.realpath)
 		project_support_link_path.make_symlink(relative_path)
 	end
 	
@@ -38,7 +38,7 @@ namespace :project do
 DREAM_PROJECT=$(SRCROOT)/support/dream-framework
 
 // Include the basic Dream-Project configuration:
-#include "support/dream-project/share/build/dream-framework.xcconfig"
+#include "support/dream-framework/share/build/dream-framework.xcconfig"
 			EOF
 		end
 	end
