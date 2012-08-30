@@ -20,7 +20,7 @@ Platform.new(:darwin_osx) do |config|
 	
 	config.build_environment = {
 		"CFLAGS" => "#{GLOBAL_CFLAGS} #{config.cflags}",
-		"CXXFLAGS" => "#{GLOBAL_CFLAGS} #{config.cflags} -std=c++0x -stdlib=libc++ -Wno-c++11-narrowing",
+		"CXXFLAGS" => "#{GLOBAL_CFLAGS} #{config.cflags} -std=c++11 -stdlib=libc++ -Wno-c++11-narrowing",
 		"LDFLAGS" => "#{config.cflags}"
 	}
 
