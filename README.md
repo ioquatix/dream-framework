@@ -1,19 +1,36 @@
 # Dream Framework #
 
-This framework includes a number of packages typically useful in application development along with build scripts to compile everything for a variety of different platforms. To build and compile all dependencies, simply run the default task:
-
-	% rake
-
-The main targets at this time include Mac OS X, iOS and Linux. Android support is currently in progress and Windows support may happen eventually.
+This framework includes a number of packages typically useful in application development along with build scripts to compile everything for a variety of different platforms. The main targets at this time include Mac OS X, iOS and Linux. Android support is currently in progress and Windows support may happen eventually.
 
 ## New Projects ##
 
-The purpose of this framework is to facilitate the development of cross-platform projects. To link Dream Project to a new project, use the following command:
+### Build ###
+
+To build and compile all dependencies, simply run the default task:
+
+	% rake
+
+### Combine ###
+
+The purpose of this framework is to facilitate the development of cross-platform projects. To link this framework to a new project, use the following command:
 
 	% rake project:link path/to/project
-	-- This will create path/to/project/support/dream-framework
 
-This will 
+This will create a relative symlink `path/to/project/support/dream-framework` which points to the dream-framework directory.
+
+#### Xcode Configuration #####
+
+Xcode integration works by using `.xcconfig` files
+
+	% rake project:xcconfig path/to/project
+
+This will create `path/to/project/support/dream-framework.xcconfig` which you can use in your Xcode project.
+
+#### CMake Configuration ####
+
+CMake integration works by including the relevant CMake modules into your existing build system.
+
+This is currently a work in progress.
 
 ## Packages ##
 
