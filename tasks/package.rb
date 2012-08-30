@@ -18,7 +18,7 @@ module Dream
 			ordered = []
 
 			expand = lambda do |name|
-				package = packages[name]
+				package = ALL[name]
 
 				unless package
 					puts "Couldn't resolve #{name}"
@@ -33,8 +33,8 @@ module Dream
 				end
 			end
 
-			packages.each do |name, package|
-				expand.call(name)
+			packages.each do |package|
+				expand.call(package.name)
 			end
 
 			return ordered
@@ -96,6 +96,10 @@ module Dream
 			end
 
 			return ALL[name]
+		end
+		
+		def to_s
+			"<Package: #{@name}>"
 		end
 	end
 end

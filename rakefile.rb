@@ -46,10 +46,7 @@ task :build_all do
 			package.name
 		end
 		
-		# For testing...
-		# next unless platform.name == :darwin_iphonesimulator
 		Package.all.each do |package|
-			# next unless package.name == "boost_1_43_0"
 			package.build(platform)
 		end
 	end
@@ -60,22 +57,46 @@ task :build, [:package, :platform] do |task, arguments|
 	packages = Package.all
 	
 	if arguments[:package]
-		packages = [Package::ALL[arguments[:package]]]
+		package = Package::ALL[arguments[:package]]
+		
+		unless package
+			puts "Could not find package #{arguments[:package]}"
+			
+			next
+		end
+		
+		packages = [package]
 	end
 	
 	if arguments[:platform]
-		platforms = [Platform::ALL[arguments[:platform].to_sym]]
+		platform = Platform::ALL[arguments[:platform].to_sym]
+		
+		unless platform
+			puts "Could not find platform #{arguments[:package]}"
+			
+			next
+		end
+		
+		platforms = [platform]
 	end
 	
+	unless ENV['ONLY']
+		ordered = Package.build_order(packages)
+	else
+		ordered = packages
+	end
+	
+	puts "Building: #{ordered.join(', ')}"
+	
 	platforms.each do |platform|
-		packages.each do |package|
+		ordered.each do |package|
 			package.build(platform)
 		end
 	end
 end
 
 task :list do
-	ordered = Package::build_order(Package::ALL)
+	ordered = Package::build_order(Package::ALL.values)
 	
 	ordered.each do |package|
 		puts "Package: #{package.name}"
