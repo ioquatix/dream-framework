@@ -13,12 +13,14 @@ task :fetch do
 			url = location[:url]
 			local_path = package.path + (location[:filename] || File.basename(url))
 			
-			unless File.exist? local_path
-				puts "Downloading #{name} to #{local_path}..."
-				sh("curl", "-L", url, "-o", local_path)
-			end
+			puts "Local path: #{local_path}"
 			
-			unless File.exist? package.source_path
+			unless package.source_path.exist?
+				unless local_path.exist?
+					puts "Downloading #{name} to #{local_path}..."
+					sh("curl", "-L", url, "-o", local_path)
+				end
+			
 				puts "Extracting #{name}..."
 				sh("mkdir", package.source_path)
 				sh("tar", "-C", package.source_path, "--strip-components", "1", "-xvf", local_path)

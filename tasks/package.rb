@@ -40,10 +40,11 @@ module Dream
 			return ordered
 		end
 
-		def initialize(name, path)
+		def initialize(name, path = nil)
 			@name, @version = name.split('-', 2)
 
-			@path = path
+			@path = path || (PACKAGES_PATH + @name)
+
 			@variants = {}
 			@depends = []
 
@@ -63,7 +64,7 @@ module Dream
 		attr :source_path, true
 
 		def self.define(name, &block)
-			package = Package.new(name, PACKAGES_PATH + name)
+			package = Package.new(name)
 
 			yield(package)
 		end
