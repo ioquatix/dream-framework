@@ -1,6 +1,15 @@
 # Dream Framework #
 
+* Author: Samuel G. D. Williams (<http://www.oriontransfer.co.nz>)
+* Copyright (C) 2012 Samuel G. D. Williams.
+* Released under the MIT license.
+
 This framework includes a number of packages typically useful in application development along with build scripts to compile everything for a variety of different platforms. The main targets at this time include Mac OS X, iOS and Linux. Android support is currently in progress and Windows support may happen eventually.
+
+A [selection of examples][1] that use this framework are available. For more details, please see the main [project page][2].
+
+[1]: https://github.com/ioquatix/dream-examples
+[2]: http://www.oriontransfer.co.nz/research/dream
 
 ## New Projects ##
 
@@ -70,3 +79,25 @@ At this time, Mac OS X 10.8 is required to build `darwin_*` platforms.
 You will need to download the [android_ndk][1] (only the latest version is supported) into platforms in order for this to work.
 
 [1]: http://www.crystax.net/android/ndk
+
+## License ##
+
+Copyright (c) 2012 Samuel G. D. Williams. <http://www.oriontransfer.co.nz>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
