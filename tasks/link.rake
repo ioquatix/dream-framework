@@ -28,7 +28,7 @@ namespace :project do
 	task :xcconfig do
 		project_path = Pathname.new(ARGV.pop)
 		project_support_path = project_path + "support"
-		project_support_xcconfig_path = project_support_path + "dream-framework.xcconfig"
+		project_support_xcconfig_path = project_support_path + "DreamFramework.xcconfig"
 		
 		project_support_xcconfig_path.open("w") do |file|
 			file.write(<<-EOF)
@@ -36,9 +36,10 @@ namespace :project do
 
 // The root directory of Dream Project:
 DREAM_PROJECT=$(SRCROOT)/support/dream-framework
+DREAM_PROJECT_LIBRARIES=-lDream -lpng -ljpeg -lfreetype -logg -lvorbis -lvorbisfile -lz -lbz2
 
 // Include the basic Dream-Project configuration:
-#include "support/dream-framework/share/build/dream-framework.xcconfig"
+#include "support/dream-framework/share/build/DreamFramework.xcconfig"
 			EOF
 		end
 	end
