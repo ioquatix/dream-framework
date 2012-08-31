@@ -41,7 +41,9 @@ module Dream
 		end
 
 		def initialize(name, path = nil)
-			@name, @version = name.split('-', 2)
+			parts = name.split('-')
+			@name = parts[0..-2].join('-')
+			@version = parts[-1]
 
 			@path = path || (PACKAGES_PATH + @name)
 
