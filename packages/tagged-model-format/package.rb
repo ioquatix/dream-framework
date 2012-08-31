@@ -25,6 +25,3 @@ Package.define("tagged-model-format-0.1.0") do |package|
 		end
 	end
 end
-
-
-
