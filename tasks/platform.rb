@@ -4,13 +4,9 @@ module Dream
 	
 	class Platform
 		ALL = {}
-	
-		def available
-			return @config.available
-		end
 
 		def self.all
-			ALL.values.select{|platform| platform.available}
+			ALL.values.select{|platform| platform.available?}
 		end
 	
 		class Config
@@ -37,20 +33,48 @@ module Dream
 			BUILD_PATH + @name.to_s
 		end
 	
-		def initialize(name, &block)
+		def initialize(name)
 			@name = name
-			@config = Config.new
-		
-			yield @config
-		
+			@config = nil
+			@available = false
+			
 			ALL[name] = self
 		end
-	
+		
+		def configure(&block)
+			@configuration = Proc.new &block
+		end
+		
+		def config
+			if available?
+				config = Config.new
+			
+				@configuration.call(config)
+			
+				return config
+			else
+				return nil
+			end
+		end
+		
+		def self.define(name, &block)
+			platform = Platform.new(name)
+
+			yield(platform)
+		end
+		
 		attr :name
-		attr :config
+		
+		def make_available!
+			@available = true
+		end
+		
+		def available?
+			@available
+		end
 		
 		def to_s
-			"<Platform: #{@name}>"
+			"<Platform #{@name}: #{@availble ? 'available' : 'inactive'}>"
 		end
 	end
 end
