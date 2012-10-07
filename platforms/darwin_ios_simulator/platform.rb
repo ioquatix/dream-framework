@@ -6,7 +6,7 @@
 
 Platform.define(:darwin_ios_simulator) do |platform|
 	platform.configure do |config|
-		iphone_sdk_version = ENV["IPHONE_SDK_VERSION"] || "5.1" 
+		iphone_sdk_version = ENV["IPHONE_SDK_VERSION"] || "6.0" 
 	
 		config.xcode_path = Pathname.new(`xcode-select --print-path`.chomp)
 		config.platform = config.xcode_path + "Platforms/iPhoneSimulator.platform"
