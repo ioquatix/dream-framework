@@ -17,7 +17,8 @@ Package.define("dream-0.1.2") do |package|
 					cmake_options = []
 					cmake_options << "-DCMAKE_INSTALL_PREFIX:PATH=#{platform.prefix}"
 					cmake_options << "-DCMAKE_PREFIX_PATH=#{platform.prefix}"
-					cmake_options << "-DDREAM_VARIANT=#{platform.name}"
+					cmake_options << "-DDREAM_PLATFORM=#{platform.name}"
+					cmake_options << "-DDREAM_VARIANT=debug"
 					cmake_options << ".."
 					
 					sh("cmake", "-G", "Unix Makefiles", *cmake_options)
