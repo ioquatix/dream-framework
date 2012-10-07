@@ -19,6 +19,14 @@ To build and compile all dependencies, simply run the default task:
 
 	% rake
 
+You can specify a debug variant which compiles with debug symbols
+
+	% rake build VARIANT=debug
+
+If you want something more specific you can specify the package, platform, etc:
+
+	% rake build[dream,darwin_ios] ONLY=true VARIANT=debug
+
 ### Combine ###
 
 The purpose of this framework is to facilitate the development of cross-platform projects. To link this framework to a new project, use the following command:
