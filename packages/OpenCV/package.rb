@@ -5,6 +5,7 @@ Package.define("OpenCV-2.4.2") do |package|
 	package.variant(:all) do |platform, config|
 		RExec.env(config.build_environment) do
 			run("patch", "-Np0", "-iclang.patch")
+			run("patch", "-Np0", "-ilsh.patch")
 			
 			Dir.chdir(package.source_path) do
 				sh("rm", "-rf", "build")
