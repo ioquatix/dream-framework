@@ -26,7 +26,15 @@ EXT_PATH = Pathname.new(__FILE__).dirname
 SOURCE_PATH = EXT_PATH + "src"
 BUILD_PATH = EXT_PATH + "build"
 CPP_SOURCE = ['h', 'c', 'cpp']
-GLOBAL_CFLAGS = "-O2 -Wall -Wmissing-prototypes -std=c99 -ffast-math -fno-strict-aliasing -pipe"
+
+case ENV['VARIANT']
+when 'debug'
+	GLOBAL_CFLAGS = "-O0 -g -Wall -Wmissing-prototypes -pipe"
+when 'release'
+	GLOBAL_CFLAGS = "-O2 -Wall -ffast-math -fno-strict-aliasing -pipe"
+else
+	GLOBAL_CFLAGS = ""
+end
 
 Dir["./tasks/*.rake"].each do |path|
 	load path
