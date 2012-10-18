@@ -10,6 +10,20 @@ module Dream
 		class BuildError < StandardError
 		end
 
+		class Task
+			def initialize
+				@callbacks = {}
+			end
+			
+			def define(name, &callback)
+				@callbacks[name] = callback
+			end
+			
+			def [](name)
+				@callbacks[name] || @callbacks[:all]
+			end
+		end
+
 		def self.all
 			ALL.values
 		end
@@ -47,7 +61,7 @@ module Dream
 
 			@path = path || (PACKAGES_PATH + @name)
 
-			@variants = {}
+			@build = Task.new
 			@depends = []
 
 			@source_path = @path + name
@@ -71,24 +85,24 @@ module Dream
 			yield(package)
 		end
 
-		def variant(name, &block)
-			@variants[name] = Proc.new
+		def build(platform, &block)
+			@build.define(platform, &block)
 		end
 
-		def build(platform)
-			puts "Building #{@name} for #{platform.name}".center(80, "-")
-			callback = @variants[platform.name] || @variants[:all]
-
-			if (callback)
+		def build!(platform, config = {})
+			task = @build[platform.name]
+			
+			puts "Building #{@name} for #{platform.name}"
+			if task
 				Dir.chdir(@path) do
-					puts "Entering #{@path}"
-					callback.call(platform, platform.config)
+					puts "Entering #{@path}..."
+					task.call(platform, platform.config.merge(config))
 				end
 			else
-				raise BuildError.new("Could not find variant #{platform.name}")
+				raise BuildError.new("Could not find task #{task_name} for #{platform.name}!")
 			end
 		end
-    
+
 		def fetch_from(location)
 			@fetch_location = location
 		end
@@ -100,7 +114,7 @@ module Dream
 
 			return ALL[name]
 		end
-		
+
 		def to_s
 			"<Package: #{@name}>"
 		end

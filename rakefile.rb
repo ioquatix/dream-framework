@@ -27,13 +27,13 @@ SOURCE_PATH = EXT_PATH + "src"
 BUILD_PATH = EXT_PATH + "build"
 CPP_SOURCE = ['h', 'c', 'cpp']
 
-case ENV['VARIANT']
+VARIANT = ENV['VARIANT'] || 'debug'
+
+case VARIANT
 when 'debug'
 	GLOBAL_CFLAGS = "-O0 -g -Wall -Wmissing-prototypes -pipe"
 when 'release'
 	GLOBAL_CFLAGS = "-O2 -Wall -ffast-math -fno-strict-aliasing -pipe"
-else
-	GLOBAL_CFLAGS = ""
 end
 
 Dir["./tasks/*.rake"].each do |path|
@@ -60,15 +60,18 @@ task :build_all do
 	end
 end
 
-task :build, [:package, :platform] do |task, arguments|
+task :build do |task, arguments|
 	platforms = Platform.all
 	packages = Package.all
 	
-	if arguments[:package]
-		package = Package::ALL[arguments[:package]]
+	build_package = ENV['PACKAGE']
+	build_platform = ENV['PLATFORM']
+	
+	if build_package
+		package = Package::ALL[build_package]
 		
 		unless package
-			puts "Could not find package #{arguments[:package]}"
+			puts "Could not find package #{build_package}"
 			
 			next
 		end
@@ -76,11 +79,12 @@ task :build, [:package, :platform] do |task, arguments|
 		packages = [package]
 	end
 	
-	if arguments[:platform]
-		platform = Platform::ALL[arguments[:platform].to_sym]
+
+	if build_platform
+		platform = Platform::ALL[build_platform.to_sym]
 		
 		unless platform
-			puts "Could not find platform #{arguments[:package]}"
+			puts "Could not find platform #{build_platform}"
 			
 			next
 		end
@@ -94,11 +98,11 @@ task :build, [:package, :platform] do |task, arguments|
 		ordered = packages
 	end
 	
-	puts "Building: #{ordered.join(', ')}"
+	puts "Building: #{ordered.join(', ')} for variant #{VARIANT}"
 	
 	platforms.each do |platform|
 		ordered.each do |package|
-			package.build(platform)
+			package.build!(platform, :variant => VARIANT)
 		end
 	end
 end

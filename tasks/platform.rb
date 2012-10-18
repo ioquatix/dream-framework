@@ -10,8 +10,8 @@ module Dream
 		end
 	
 		class Config
-			def initialize
-				@values = {}
+			def initialize(values = {})
+				@values = values
 			end
 		
 			attr :values
@@ -19,13 +19,17 @@ module Dream
 			def method_missing(name, *args)
 				if name.to_s.match(/^(.*?)(\=)?$/)
 					if $2
-						return @values[$1] = args[0]
+						return @values[$1.to_sym] = args[0]
 					else
-						return @values[$1]
+						return @values[$1.to_sym]
 					end
 				else
 					super(name, *args)
 				end
+			end
+			
+			def merge(config)
+				Config.new(@values.merge(config))
 			end
 		end
 	

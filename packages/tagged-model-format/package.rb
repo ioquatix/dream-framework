@@ -2,7 +2,7 @@
 Package.define("tagged-model-format-0.1.1") do |package|
 	package.fetch_from :url => "https://github.com/ioquatix/tagged-model-format/tarball/0.1.1", :filename => "tagged-model-format-0.1.1.tar.gz"
 	
-	package.variant(:all) do |platform, config|
+	package.build(:all) do |platform, config|
 		puts YAML::dump(config.build_environment)
 		
 		RExec.env(config.build_environment) do
