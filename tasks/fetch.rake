@@ -18,12 +18,12 @@ task :fetch do
 			unless package.source_path.exist?
 				unless local_path.exist?
 					puts "Downloading #{name} to #{local_path}..."
-					sh("curl", "-L", url, "-o", local_path)
+					sh("curl", "-L", url, "-o", local_path.to_s)
 				end
 			
 				puts "Extracting #{name}..."
-				sh("mkdir", package.source_path)
-				sh("tar", "-C", package.source_path, "--strip-components", "1", "-xvf", local_path)
+				sh("mkdir", package.source_path.to_s)
+				sh("tar", "-C", package.source_path.to_s, "--strip-components", "1", "-xvf", local_path.to_s)
 			end
 		end
 	end
