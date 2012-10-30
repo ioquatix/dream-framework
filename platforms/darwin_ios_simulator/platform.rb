@@ -25,7 +25,7 @@ Platform.define(:darwin_ios_simulator) do |platform|
 			"LD" => (config.toolchain + "usr/bin/ld").to_s,
 			"CFLAGS" => "#{GLOBAL_CFLAGS} #{config.cflags}",
 			"CXXFLAGS" => "#{GLOBAL_CFLAGS} #{config.cflags} -std=c++11 -stdlib=libc++ -Wno-c++11-narrowing",
-			"LDFLAGS" => "#{config.cflags}"
+			"LDFLAGS" => "#{GLOBAL_LDFLAGS} #{config.cflags}"
 		}
 	end
 	

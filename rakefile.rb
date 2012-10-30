@@ -32,8 +32,10 @@ VARIANT = ENV['VARIANT'] || 'debug'
 case VARIANT
 when 'debug'
 	GLOBAL_CFLAGS = "-O0 -g -Wall -Wmissing-prototypes -pipe"
+	GLOBAL_LDFLAGS = "-g"
 when 'release'
 	GLOBAL_CFLAGS = "-O2 -Wall -ffast-math -fno-strict-aliasing -pipe"
+	GLOBAL_LDFLAGS = ""
 end
 
 Dir["./tasks/*.rake"].each do |path|

@@ -15,7 +15,7 @@ Platform.define(:linux) do |platform|
 	
 		config.build_environment = {
 			"CFLAGS" => "#{GLOBAL_CFLAGS} #{config.cflags}",
-			"LDFLAGS" => "#{config.cflags}"
+			"LDFLAGS" => "#{GLOBAL_LDFLAGS} #{config.cflags}"
 		}
 	end
 	

@@ -51,7 +51,7 @@ Platform.define(:android_ndk) do |platform|
 			"RANLIB" => toolchain_bin["ranlib"],
 			"CPPFLAGS" => "-I#{config.sdk}/usr/include",
 			"CFLAGS" => "#{GLOBAL_CFLAGS} #{config.cflags}",
-			"LDFLAGS" => "#{config.cflags} -Wl,-entry=main,-no-undefined,-rpath-link=#{config.sdk}/usr/lib",
+			"LDFLAGS" => "#{GLOBAL_LDFLAGS} #{config.cflags} -Wl,-entry=main,-no-undefined,-rpath-link=#{config.sdk}/usr/lib",
 			"LIBS" => "-lc -lcrystax_static -lstdc++ -lm -llog -lgcc -lgcc_eh -ldl"
 		}
 	end
