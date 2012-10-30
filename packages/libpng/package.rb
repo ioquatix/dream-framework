@@ -1,6 +1,6 @@
 
-Package.define("libpng-1.5.12") do |package|
-	package.fetch_from :url => "ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.5.12.tar.gz"
+Package.define("libpng-1.5.13") do |package|
+	package.fetch_from :url => "ftp://ftp.simplesystems.org/pub/libpng/png/src/libpng-1.5.13.tar.gz"
 	
 	package.build(:all) do |platform, config|
 		RExec.env(config.build_environment) do
