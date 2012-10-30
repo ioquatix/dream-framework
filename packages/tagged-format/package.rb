@@ -1,6 +1,6 @@
 
-Package.define("tagged-format-0.1.1") do |package|
-	package.fetch_from :url => "https://github.com/ioquatix/tagged-format/tarball/0.1.1", :filename => "tagged-format-0.1.1.tar.gz"
+Package.define("tagged-format-0.2.0") do |package|
+	package.fetch_from :url => "https://github.com/ioquatix/tagged-format/tarball/0.1.1", :filename => "tagged-format-0.2.0.tar.gz"
 	
 	package.build(:all) do |platform, config|
 		RExec.env(config.build_environment) do
