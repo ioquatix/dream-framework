@@ -35,6 +35,9 @@ OTHER_LDFLAGS[sdk=iphone*]=$(DREAM_PROJECT_LIBRARIES) -framework QuartzCore -fra
 HEADER_SEARCH_PATHS="$(DREAM_PLATFORM_PATH)/include" "$(DREAM_PLATFORM_PATH)/include/freetype2"
 LIBRARY_SEARCH_PATHS="$(DREAM_PLATFORM_PATH)/lib"
 
+// Dwarf format doesn't seem to work well with static archives
+DEBUG_INFORMATION_FORMAT=dwarf-with-dsym
+
 // Use C++0x11 features:
 GCC_VERSION=com.apple.compilers.llvm.clang.1_0
 CLANG_CXX_LANGUAGE_STANDARD=c++11
