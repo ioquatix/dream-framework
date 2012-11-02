@@ -84,9 +84,9 @@ At this time, Mac OS X 10.8 is required to build `darwin_*` platforms.
 
 ### Android NDK ###
 
-You will need to download the [android_ndk][1] (only the latest version is supported) into platforms in order for this to work.
+You will need to download the [android_ndk][3] (only the latest version is supported) into platforms in order for this to work.
 
-[1]: http://www.crystax.net/android/ndk
+[3]: http://www.crystax.net/android/ndk
 
 ## License ##
 
