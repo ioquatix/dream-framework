@@ -1,6 +1,6 @@
 
-Package.define("dream-0.1.4") do |package|
-	package.fetch_from :url => "https://github.com/ioquatix/dream/tarball/0.1.4", :filename => "dream-0.1.4.tar.gz"
+Package.define("dream-0.1.5") do |package|
+	package.fetch_from :url => "https://github.com/ioquatix/dream/tarball/0.1.5", :filename => "dream-0.1.5.tar.gz"
 	
 	package.depends = ['libogg', 'libpng', 'jpeg', 'freetype']
 	
