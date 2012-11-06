@@ -1,6 +1,6 @@
 
 Package.define("OpenCV-2.4.3") do |package|
-	package.fetch_from :url => "https://github.com/itseez/opencv/archive/2.4.3.zip"
+	package.fetch_from :url => "https://github.com/itseez/opencv/archive/2.4.3.tar.gz"
 	
 	package.build(:all) do |platform, config|
 		RExec.env(config.build_environment) do
