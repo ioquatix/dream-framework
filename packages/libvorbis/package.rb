@@ -2,10 +2,12 @@
 Package.define("libvorbis-1.3.3") do |package|
 	package.fetch_from :url => "http://downloads.xiph.org/releases/vorbis/libvorbis-1.3.3.tar.gz"
 	
+	package.depends = ["libogg"]
+
 	package.build(:all) do |platform, config|
 		RExec.env(config.build_environment) do
 			Dir.chdir(package.source_path) do
-				sh("make", "clean") if File.exist? "Makefile"
+				run("make", "clean") if File.exist? "Makefile"
 				
 				# The default configure has problems when compiling with multiple architectures because of the following option..
 				# so we remove it forcefully.

@@ -2,7 +2,7 @@
 Package.define("dream-0.1.5") do |package|
 	package.fetch_from :url => "https://github.com/ioquatix/dream/tarball/0.1.5", :filename => "dream-0.1.5.tar.gz"
 	
-	package.depends = ['libogg', 'libpng', 'jpeg', 'freetype']
+	package.depends = ['libvorbis', 'libpng', 'jpeg', 'freetype', 'gl3-headers']
 	
 	package.build(:all) do |platform, config|
 		RExec.env(config.build_environment) do
