@@ -12,9 +12,10 @@ Platform.define(:linux) do |platform|
 		# config.arch = "-arch ppc -arch i386 -arch x86_64"
 		config.arch = "-arch i386 -arch x86_64"
 		config.configure = []
-	
+
 		config.build_environment = {
 			"CFLAGS" => "#{GLOBAL_CFLAGS} #{config.cflags}",
+			"CXXFLAGS" => "#{GLOBAL_CXXFLAGS} #{config.cxxflags}",
 			"LDFLAGS" => "#{GLOBAL_LDFLAGS} #{config.cflags}"
 		}
 	end

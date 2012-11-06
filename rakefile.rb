@@ -32,9 +32,11 @@ VARIANT = ENV['VARIANT'] || 'debug'
 case VARIANT
 when 'debug'
 	GLOBAL_CFLAGS = "-O0 -g -Wall -Wmissing-prototypes -pipe"
+	GLOBAL_CXXFLAGS = "-std=c++11"
 	GLOBAL_LDFLAGS = "-g"
 when 'release'
 	GLOBAL_CFLAGS = "-O2 -Wall -ffast-math -fno-strict-aliasing -pipe"
+	GLOBAL_CXXFLAGS = "-std=c++11"
 	GLOBAL_LDFLAGS = ""
 end
 
