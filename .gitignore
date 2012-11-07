@@ -1,6 +1,6 @@
 .DS_Store
 build
-packages/*/*/
+packages/*/*/*
 packages/*/*.tar.gz
 packages/*/*.tar.bz2
-platforms/*/*/
+platforms/*/*/*
