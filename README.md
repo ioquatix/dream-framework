@@ -82,6 +82,13 @@ Platforms are specific configurations for compiling external dependencies. Unfor
 
 At this time, Mac OS X 10.8 is required to build `darwin_*` platforms. 
 
+### Linux ###
+
+Build using the following command:
+
+	$ sudo apt-get install cmake libz-dev libopenal-dev
+	$ rake build PLATFORM=linux
+
 ### Android NDK ###
 
 You will need to download the [android_ndk][3] (only the latest version is supported) into platforms in order for this to work.
