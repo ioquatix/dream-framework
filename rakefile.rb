@@ -83,7 +83,6 @@ task :build do |task, arguments|
 		packages = [package]
 	end
 	
-
 	if build_platform
 		platform = Platform::ALL[build_platform.to_sym]
 		
@@ -105,6 +104,8 @@ task :build do |task, arguments|
 	puts "Building: #{ordered.join(', ')} for variant #{VARIANT}"
 	
 	platforms.each do |platform|
+		platform.prepare!
+		
 		ordered.each do |package|
 			package.build!(platform, :variant => VARIANT)
 		end

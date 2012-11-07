@@ -1,4 +1,6 @@
 
+require 'fileutils'
+
 module Dream
 	PLATFORMS_PATH = BASE_PATH + "platforms"
 	
@@ -35,6 +37,10 @@ module Dream
 	
 		def prefix
 			BUILD_PATH + @name.to_s
+		end
+	
+		def cmake_modules_path
+			prefix + "share/cmake/modules"
 		end
 	
 		def initialize(name)
@@ -79,6 +85,10 @@ module Dream
 		
 		def to_s
 			"<Platform #{@name}: #{@availble ? 'available' : 'inactive'}>"
+		end
+		
+		def prepare!
+			FileUtils.mkdir_p cmake_modules_path
 		end
 	end
 end

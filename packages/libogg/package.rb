@@ -11,5 +11,7 @@ Package.define("libogg-1.3.0") do |package|
 				sh("make install")
 			end
 		end
+		
+		sh("cp", "FindOgg.cmake", platform.cmake_modules_path.to_s)
 	end
 end

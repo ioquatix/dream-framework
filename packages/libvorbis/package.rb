@@ -17,5 +17,7 @@ Package.define("libvorbis-1.3.3") do |package|
 				sh("make install")
 			end
 		end
+		
+		sh("cp", "FindVorbis.cmake", platform.cmake_modules_path.to_s)
 	end
 end
